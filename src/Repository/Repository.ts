@@ -22,9 +22,9 @@ async function GetGenres() {
     };
 };
 
-async function GetMoviesGenre(){
+async function GetMoviesGenre(idGenre: string){
     try {
-        const response = await api.get(`/3/discover/movie?api_key=${api_key}&language=en-US&year=2021`);
+        const response = await api.get(`/3/discover/movie?api_key=${api_key}&language=en-US&page=1&with_genres=${idGenre}`);
         if(response.status >= 200 && response.status < 300){
             const genreList = response.data;
             return{
