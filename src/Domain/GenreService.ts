@@ -1,8 +1,8 @@
-import GetGenresList from "../Repository/Repository";
+import {GetGenres} from "../Repository/Repository";
 
 class GenreService {
-    async getGenreList() {
-        const repositoryResponse = await GetGenresList();
+    async getGenre() {
+        const repositoryResponse = await GetGenres();
         if (repositoryResponse.status) {
             return view(repositoryResponse);
         };
@@ -22,7 +22,5 @@ function view({ data }: any) {
 
     return genreList;
 };
-
-
 
 export default GenreService;

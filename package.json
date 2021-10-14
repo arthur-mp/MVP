@@ -1,7 +1,7 @@
 {
   "name": "mvp",
   "version": "1.0.0",
-  "description": "",
+  "description": "MVP Commit Jr, projeto com intuito de aprendizado sobre os fundamentos Web e aplicar os mesmos usando uma API de filmes.",
   "main": "server.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -11,7 +11,7 @@
     "type": "git",
     "url": "git+https://github.com/arthur-mp/MVP.git"
   },
-  "author": "",
+  "author": "Arthur",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/arthur-mp/MVP/issues"
