@@ -1,0 +1,19 @@
+.main-header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(164, 164, 164, 1);
+    height: 80px;
+    padding: 5px 60px;   
+}
+
+.menu-links {
+    font-size: 30px;
+    margin-left: 5vw;
+}
+
+
+
+
+

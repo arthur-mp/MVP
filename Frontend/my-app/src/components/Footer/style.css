@@ -1,0 +1,34 @@
+.main-footer{
+    display: flex;
+    padding-top: 5px;
+    font-weight: normal;
+    text-align: center;
+    align-items: center;
+    justify-content: space-between;
+    background-color:rgba(164, 164, 164, 1);  
+}
+
+.icons-footer {
+    margin-top: 8px;
+    justify-content:space-between;
+  }
+  
+  .icons-footer > * {
+    margin-inline: 3px;
+  }
+
+  .logoCommit{
+    margin-left: 80px;
+    margin-bottom: 5px;
+    height: 60px;
+    width: 60px;
+  }
+
+  .logo{
+    margin-right: 80px;
+    margin-top: 5px;
+    height: 90px;
+    width: 90px;
+  }
+
+
