@@ -1,15 +1,16 @@
 import './App.css';
-import Header from './components/Header/index.jsx';
-import Destaques from './components/Destaques/index.jsx';
-import Footer from './components/Footer/index.jsx';
-import Lancamentos from './components/Releases/index.jsx';
+
 import { createTheme } from '@material-ui/core/styles';
+import Header from './components/Header';
+import Releases from './components/Releases';
+import Destaques from './components/Destaques';
+import Footer from './components/Footer';
 
 function App() {
   return (
     <div className="App">
       <Header/>
-      <Lancamentos/>
+      <Releases/>
       <Destaques/>
       <Footer/>
     </div>

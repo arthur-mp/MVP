@@ -1,22 +1,25 @@
-import React from "react";
+import React, {useState, useEffect}  from "react";
 import "./style.css";
 import Slider from "../Slider/index.jsx";
-import img1 from "../../assets/img1.jpg";
-import img2 from "../../assets/img2.jpg";
-import img3 from "../../assets/img3.jpg";
-
-const sliderData = [
-    {image: img1},
-    {image: img2},
-    {image: img3}
-];
+import getMovieGenre from "../../APIs/getMovieGenre";
 
 function Releases(){
+    const [movie, setMovie] = useState([]);
 
+    async function getMovie() {
+        const genres = await getMovieGenre(35);
+        setMovie(genres.data);
+    }
+
+    useEffect(() => {
+        getMovie();
+    }, [])
+
+    console.log(movie)
     return(
         <section className="releases-Section">
             <h1 className="title">Releases</h1>
-            <Slider sliderData={sliderData}/>
+            <Slider sliderData={movie}/>
         </section>
     );
 };

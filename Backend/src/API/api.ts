@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import GenreService from '../Domain/GenreService';
-import GenreMovieService from '../Domain/GenreMovieService';
+import GenreMovieService from '../Domain/GenrerMovieService';
 import NowPlayingService from '../Domain/NowPlayingService';
 
 class GenreController {
