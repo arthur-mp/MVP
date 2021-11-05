@@ -17,7 +17,7 @@
     top: 50%;
     right: -120px;
     font-size: 3rem;
-    color: rgba(164, 164, 164, 1);
+    color: #212121;
     z-index: 10;
     cursor: pointer;
     user-select: none;
@@ -28,7 +28,7 @@
     top: 50%;
     left: -75px;
     font-size: 3rem;
-    color: rgba(164, 164, 164, 1);
+    color: #212121;
     z-index: 10;
     cursor: pointer;
     user-select: none;

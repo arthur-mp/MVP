@@ -9,7 +9,7 @@ import Box from '@material-ui/core/Box';
 function Slider({sliderData}){
     
     const [current, setCurrent] = useState(0);
-    const length = sliderData.length;  
+    const length = sliderData.length;
 
 
     const nextSlide = () => {
@@ -29,8 +29,7 @@ function Slider({sliderData}){
         <section className="slider">
             <FaArrowAltCircleLeft className="left-arrow" onClick={prevSlide}/>
             <FaArrowAltCircleRight className="right-arrow" onClick={nextSlide} />
-            {sliderData.filter((slide) => slide.keyVideo.length !== 0 && slide.runtime > 0)
-            .map((slide, index) => {
+            {sliderData.map((slide, index) => {
                 return(
                     <div className={index === current ? 'slide active' : 'slide'} key= {index}>
                      {index === current && (

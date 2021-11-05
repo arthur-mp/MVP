@@ -1,8 +1,10 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import './style.css';
-import Card from '../Card';
+import MovieList from '../models/MovieList/index';
 
-import { useTheme } from '@mui/material/styles';
+import getGenres from '../../APIs/getGenre';
+import getMovieGenre from '../../APIs/getMovieGenre';
+
 import OutlinedInput from '@mui/material/OutlinedInput';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -10,6 +12,9 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Button from '@mui/material/Button';
 import AddIcon from '@mui/icons-material/Add';
+
+import {newTheme} from '../../App';
+import { ThemeProvider } from "@mui/material";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -22,81 +27,100 @@ const MenuProps = {
   },
 };
 
-const names = [
-    'Oliver Hansen',
-    'Van Henry',
-    'April Tucker',
-    'Ralph Hubbard',
-    'Omar Alexander',
-    'Carlos Abbott',
-    'Miriam Wagner',
-    'Bradley Wilkerson',
-    'Virginia Andrews',
-    'Kelly Snyder',
-  ];
-
-  function getStyles(name, personName, theme) {
-    return {
-      fontWeight:
-        personName.indexOf(name) === -1
-          ? theme.typography.fontWeightRegular
-          : theme.typography.fontWeightMedium,
-    };
-  }
   
 function Destaques() { 
 
-  const theme = useTheme();
-  const [personName, setPersonName] = React.useState([]);
+  const [generos, setGeneros] = useState([]);
+  const [genero, setGenero] = useState(28);
 
-  const handleChange = (event) => {
-    const {
-      target: { value },
-    } = event;
-    setPersonName(
-      // On autofill we get a the stringified value.
-      typeof value === 'string' ? value.split(',') : value,
-    );
+  let[movies, setMovies] = useState([]);
+
+  let[selectMovies, setSelect] = useState([]);
+
+  let[count, setCount] = useState(5);
+
+  async function getGeneros() {
+    const genresList = await getGenres();
+    const genres = genresList.status ? genresList.movies : ([]);
+    setGeneros(genres);
+};
+
+  
+  async function getMovies(){
+      const movieList = await getMovieGenre(genero);
+
+      let moviesResp = movieList.status ? movieList.data : ([]);
+      setSelect(moviesResp.slice(0,moviesResp.length));
+
+      moviesResp.splice(5, moviesResp.length);
+
+      setMovies(moviesResp);
   };
 
+  useEffect(() => {
+    getGeneros();
+  }, []);
+
+  useEffect(() => {
+    getMovies();
+  }, [genero]);
+
+  const handleChange = (event) => {
+    setGenero(event.target.value)
+  };
+
+  function counter(){
+    const film = selectMovies.slice(count,count+5);
+
+    setMovies(film);
+    if(count+5 >= selectMovies.length){
+      setCount(0);
+    }else{
+      setCount(count+5);
+    }
+  }
+  
+
     return(
+      <ThemeProvider theme={newTheme}>
         <section className='Destaques'>
             <h1 className="title">Highlights</h1>
 
               <FormControl sx={{ marginInlineStart: 100, width: 200}} >
-                <InputLabel id="demo-multiple-name-label" >Category</InputLabel>
+                <InputLabel id="demo-multiple-name-label"color="primary" >Genres</InputLabel>
                 <Select
                   labelId="demo-multiple-name-label"
                   id="demo-multiple-name" 
-                  value={personName}
+                  color="primary"
+                  value={genero}
                   onChange={handleChange}
                   input={<OutlinedInput label="Category" />}
                   MenuProps={MenuProps}
                 >
-                  {names.map((name) => (
+                  {generos.map((name) => (
                     <MenuItem
-                      key={name}
-                      value={name}
-                      style={getStyles(name, personName, theme)}
+                      value={name.id}
                     >
-                      {name}
+                      {name.name}
                     </MenuItem>
                   ))}
                 </Select>
             </FormControl>
 
             <div className="cards">
-                <Card/> <Card/> <Card/> <Card/>
+                <MovieList movies={movies}/>
             </div> 
 
             <div className="button-load-more">
-                <Button variant="contained" 
-                    color="inherit" 
+                <Button  variant="contained" 
+                    color="secondary" 
                     startIcon={<AddIcon />}
                     sx={{ marginInlineStart: 102, width: 200 }}
+                    onClick={counter}
                 >More movies</Button>
             </div>
        </section>
+     </ThemeProvider>
     );
 }
 

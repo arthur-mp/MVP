@@ -31,6 +31,7 @@ class GenreMovieController{
     };
 };
 
+
 class NowPlayingController{
     static async getNowPlaying(req: Request, res: Response){
         try{

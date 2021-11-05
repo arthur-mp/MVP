@@ -8,4 +8,5 @@ router.get('/movieGenre/:idGenre', GenreMovieController.getGenreList);
 
 router.get('/nowPlaying', NowPlayingController.getNowPlaying);
 
+
 export default router;

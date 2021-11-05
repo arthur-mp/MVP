@@ -1,13 +1,12 @@
 import React from 'react';
 import './style.css';
-import CardFigma from '../../assets/photo_size_select_actual_24px_outlined.svg';
 
 
 
-function Card(){
+function Card(props){
     return(
         <div className="cards-container">
-            <img className="Image" src={CardFigma} alt="Card Destaques"  ></img>
+            <img  src={props.img} alt={props.alt} ></img>
         </div>
     )
 }

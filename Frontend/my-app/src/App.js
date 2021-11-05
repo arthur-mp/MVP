@@ -23,11 +23,18 @@ const newTheme = createTheme({
       main: '#000',
       light: '#akgk'
     },
+    secondary:{
+      main: '#95d5b2'
+    },
     text: {
       primary: '#000',
-      secondary: '#fff'
+      secondary: '#000'
+    },
+    background:{
+      paper: '#95d5b2'
     }
   },
+
 });
 
 

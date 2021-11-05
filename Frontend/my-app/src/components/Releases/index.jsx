@@ -7,7 +7,7 @@ function Releases(){
     const [movie, setMovie] = useState([]);
 
     async function getMovie() {
-        const genres = await getMovieGenre(35);
+        const genres = await getMovieGenre(10751);
         setMovie(genres.data);
     }
 
@@ -15,7 +15,6 @@ function Releases(){
         getMovie();
     }, [])
 
-    console.log(movie)
     return(
         <section className="releases-Section">
             <h1 className="title">Releases</h1>

@@ -1,7 +1,7 @@
 .releases-Section{
     display: flex;
     flex-direction: column;
-    background-color: rgba(196, 196, 196, 1);
+    background-color: #95d5b2;
     align-items: center;
     font-size: 140%;
 }
